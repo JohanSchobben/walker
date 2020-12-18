@@ -1,0 +1,17 @@
+@import "../../styles/theme";
+
+:host {
+    display: block;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+h1 {
+    margin: 2rem 0 0 1rem;
+    font-size: $head-font-size;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+}

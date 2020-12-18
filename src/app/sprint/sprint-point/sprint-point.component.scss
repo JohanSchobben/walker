@@ -1,0 +1,13 @@
+@import '../../../../node_modules/@angular/material/theming';
+@import '../../../styles/theme.scss';
+
+
+div {
+    border-radius: 50%;
+    border: 1px solid gray;
+    background-color: mat-color($success);
+}
+
+.walk {
+    background-color: mat-color($danger);
+}

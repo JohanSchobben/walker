@@ -1,0 +1,10 @@
+@import '~@angular/material/theming';
+
+$primary: mat-palette($mat-light-blue);
+$accent:  mat-palette($mat-amber, A200, A100, A400);
+
+$warn:    mat-palette($mat-red);
+$success: mat-palette($mat-green)
+
+$head-size: 35vh;
+$head-font-size: 4rem;
