@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy, Inject } from '@angular/core';
 import { DB_VERSION, DB_NAME } from './database.const';
 import { Observable, from } from 'rxjs';
-import {openDB, IDBPDatabase} from 'idb';
+import {openDB, IDBPDatabase, IDBPTransaction} from 'idb';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +46,16 @@ export class DatabaseService implements OnDestroy{
       const store = tx.objectStore(objectStore);
       return store.get(id);
     });
+    return from(transaction);
+  }
+
+  public create(objectStore: string, data: any): Observable<any> {
+    const transaction = this.database
+      .then(idb => {
+        const tx = idb.transaction(objectStore, 'readwrite');
+        const store = tx.objectStore(objectStore)
+        return store.add(data);
+      });
     return from(transaction);
   }
 
