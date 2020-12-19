@@ -3,10 +3,12 @@ import { Walk } from "./walk.model"
 export class Sprint {
   private _id: number;
   private _startDate: Date;
+  private _amountOfWeeks: number;
   private _walks: Walk[];
 
   constructor(){
     this._walks = []
+    this._amountOfWeeks = 2;
   }
 
   public static fromObject(obj: SprintObject): Sprint {
@@ -29,12 +31,27 @@ export class Sprint {
     this._id = value;
   }
 
+  public get amountOfWeeks(): number {
+    return this._amountOfWeeks;
+  }
+
+  public set amountOfWeeks(value: number) {
+    this._amountOfWeeks = value;
+  }
+
   public get startDate(): Date {
     return this._startDate;
   }
 
   public set startDate(value: Date) {
     this._startDate = value;
+  }
+
+  public get endDate() : Date {
+    const amountOfDays = this._amountOfWeeks * 7;
+    const date = new Date(this._startDate);
+    date.setDate(date.getDate() + amountOfDays);
+    return date;
   }
 
   public get walks(): Walk[] {
@@ -55,7 +72,7 @@ export class Sprint {
 }
 
 
-type SprintObject = {
+export type SprintObject = {
   id: number;
   startDate: Date;
   walks: {startTime: Date, duration: number}[]
