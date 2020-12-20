@@ -34,7 +34,7 @@ export class SprintComponent implements OnInit {
 
   registerDialogClose(): void {
     this.dialogRef.afterClosed()
-      .subscribe(result => {
+      .subscribe((result: boolean) => {
         if (result) {
           this.createSprint();
         } else {

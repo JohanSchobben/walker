@@ -1,10 +1,11 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" 
+  <mat-sidenav #drawer class="sidenav"
       fixedInViewport
       attr.role="dialog"
       mode="over">
     <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
+    <mat-nav-list (click)="drawer.toggle()">
+      <a mat-list-item routerLink="/">Home</a>
       <a mat-list-item href="#">Sprints</a>
       <a mat-list-item href="#">Profiel</a>
       <a mat-list-item href="#">Instellingen</a>
