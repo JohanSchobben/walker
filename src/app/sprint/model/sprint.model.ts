@@ -63,6 +63,11 @@ export class Sprint {
     this._walks.push(walk);
   }
 
+  public get duration(): number {
+    return this._walks.map(w => w.duration)
+      .reduce((prev, curr) => prev + curr, 0);
+  }
+
   public toObject(): SprintObject {
     return {
       id: this._id,

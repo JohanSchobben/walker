@@ -44,7 +44,10 @@ export class SprintComponent implements OnInit {
   }
 
   private createSprint(): void {
-    this.sprintService.createSprint();
+    this.sprintService.createSprint()
+      .subscribe(sprint => {
+        this.sprint = sprint;
+      })
   }
 
 }

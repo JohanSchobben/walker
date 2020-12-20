@@ -19,6 +19,12 @@ export class SprintDatabaseService {
   }
 
   public createSprint(sprint: Sprint): Observable<Sprint> {
-    return this.databaseService.create('sprints', sprint.toObject()).pipe(tap(c => console.log(c)));
+    return this.databaseService.create('sprints', sprint.toObject())
+      .pipe(
+        map((id: number) =>{
+          sprint.id = id;
+          return sprint;
+        })
+      );
   }
 }

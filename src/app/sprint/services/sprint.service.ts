@@ -23,9 +23,9 @@ export class SprintService {
       );
   }
 
-  createSprint(): void {
+  createSprint(): Observable<Sprint> {
     const sprint = new Sprint();
     sprint.startDate = new Date();
-    this.sprintDatbaseService.createSprint(sprint).subscribe();
+    return this.sprintDatbaseService.createSprint(sprint);
   }
 }

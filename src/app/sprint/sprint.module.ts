@@ -9,10 +9,11 @@ import { CreateSprintComponent } from './create-sprint/create-sprint.component';
 import { SprintFormComponent } from './sprint-form/sprint-form.component';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import { SprintStatsComponent } from './sprint-stats/sprint-stats.component';
 
 
 @NgModule({
-  declarations: [SprintComponent, SprintPointComponent, CreateSprintComponent, SprintFormComponent],
+  declarations: [SprintComponent, SprintPointComponent, CreateSprintComponent, SprintFormComponent, SprintStatsComponent],
   imports: [
     CommonModule,
     SprintRoutingModule,
