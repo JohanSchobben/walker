@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Walk } from 'src/app/model/walk';
+import { Walk } from '../model/walk.model';
 
 @Component({
   selector: 'wlk-sprint-point',

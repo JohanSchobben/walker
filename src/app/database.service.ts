@@ -12,19 +12,18 @@ export class DatabaseService implements OnDestroy{
   constructor(
     @Inject(DB_VERSION) private readonly dbVersion: number,
     @Inject(DB_NAME) private readonly dbName: string
-  ) { }
+  ) {
+    this.database = openDB(this.dbName, this.dbVersion, {
+      upgrade(db: IDBPDatabase<any>, oldVersion: number, newVersion: number, transaction): void {
+        if (!db.objectStoreNames.contains('sprints')) {
+          const sprintOS = db.createObjectStore('sprints', {autoIncrement: true});
+          sprintOS.createIndex('startDate', 'stardate', {unique: true});
+        }
+      },
+    });
+   }
 
   public getDatabase(): Observable<any> {
-    if (!this.database) {
-      this.database = openDB(this.dbName, this.dbVersion, {
-        upgrade(db: IDBPDatabase<any>, oldVersion: number, newVersion: number, transaction): void {
-          if (!db.objectStoreNames.contains('sprints')) {
-            const sprintOS = db.createObjectStore('sprints', {autoIncrement: true});
-            sprintOS.createIndex('startDate', 'stardate', {unique: true});
-          }
-        },
-      });
-    }
     return from(this.database);
   }
 

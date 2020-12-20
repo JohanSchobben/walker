@@ -12,4 +12,8 @@ export class SprintFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit(): void{
+    console.log('submit');
+  }
+
 }

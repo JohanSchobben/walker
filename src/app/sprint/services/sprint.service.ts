@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SprintDatabaseService } from './sprint-database.service';
-import { map, take } from "rxjs/operators";
+import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Sprint } from '../model/sprint.model';
 
@@ -21,6 +21,11 @@ export class SprintService {
         })),
         take(1)
       );
+  }
 
+  createSprint(): void {
+    const sprint = new Sprint();
+    sprint.startDate = new Date();
+    this.sprintDatbaseService.createSprint(sprint).subscribe();
   }
 }

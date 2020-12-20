@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'wlk-create-sprint',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateSprintComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly dialogRef: MatDialogRef<CreateSprintComponent>) { }
 
   ngOnInit(): void {
+  }
+
+  start(): void {
+    this.dialogRef.close(true);
+  }
+
+  cancel(): void {
+    this.dialogRef.close(false);
   }
 
 }
