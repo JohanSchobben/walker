@@ -3,6 +3,7 @@ import { SprintDatabaseService } from './sprint-database.service';
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Sprint } from '../model/sprint.model';
+import { Walk } from '../model/walk.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class SprintService {
 
   constructor(private readonly sprintDatbaseService: SprintDatabaseService) { }
 
-  getCurrentSprint(): Observable<Sprint>{
+  public getCurrentSprint(): Observable<Sprint>{
     return this.sprintDatbaseService
       .getSprints()
       .pipe(
@@ -23,9 +24,13 @@ export class SprintService {
       );
   }
 
-  createSprint(): Observable<Sprint> {
+  public createSprint(): Observable<Sprint> {
     const sprint = new Sprint();
     sprint.startDate = new Date();
     return this.sprintDatbaseService.createSprint(sprint);
+  }
+
+  public updateSprint(sprint: Sprint): void {
+    
   }
 }

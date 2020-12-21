@@ -1,7 +1,7 @@
 import { Walk } from './walk.model'
 
 export class Sprint {
-  private _id: number;
+  private _id: string;
   private _startDate: Date;
   private _weeks: number;
   private _walks: Walk[];
@@ -24,11 +24,11 @@ export class Sprint {
     return sprint;
   }
 
-  public get id(): number {
+  public get id(): string {
     return this._id;
   }
 
-  public set id(value: number) {
+  public set id(value: string) {
     this._id = value;
   }
 
@@ -80,7 +80,7 @@ export class Sprint {
 
 
 export type SprintObject = {
-  id: number;
+  id: string;
   startDate: Date;
   weeks: number;
   walks: {startTime: Date, duration: number}[]

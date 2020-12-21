@@ -16,7 +16,7 @@ export class DatabaseService implements OnDestroy{
     this.database = openDB(this.dbName, this.dbVersion, {
       upgrade(db: IDBPDatabase<any>, oldVersion: number, newVersion: number, transaction): void {
         if (!db.objectStoreNames.contains('sprints')) {
-          const sprintOS = db.createObjectStore('sprints', {autoIncrement: true});
+          const sprintOS = db.createObjectStore('sprints', {keyPath: 'id'});
           sprintOS.createIndex('startDate', 'stardate', {unique: true});
         }
       },
