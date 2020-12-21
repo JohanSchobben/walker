@@ -1,8 +1,23 @@
 <h1>Nieuwe Sprint</h1>
-<div class="center">
+<div class="stopwatch">
   {{ stopWatch$ | async | time }}
 </div>
 
+<div class="controls">
+  <button mat-button
+          *ngIf="state === createSessionState.Walking"
+          (click)="pause()">Pauzeren</button>
+  <button mat-button
+          *ngIf="state === createSessionState.Pause"
+          (click)="resume()">Doorgaan</button>
+  <button mat-raised-button
+          color="primary"
+          *ngIf="state === createSessionState.Idle"
+          (click)="start()">Start</button>
+  <button mat-raised-button
+          color="primary"
+          *ngIf="state === createSessionState.Walking || state === createSessionState.Pause"
+          (click)="stop()">stop</button>
+</div>
 
-<button (click)="pause()">pause</button>
-<button (click)="resume()">resume</button>
+
