@@ -1,6 +1,8 @@
 :host {
   display: flex;
   flex-direction: column;
+  height: calc(100vh - 56px);
+  padding: 0 .5rem;
 }
 
 .stopwatch {
@@ -13,7 +15,10 @@
 }
 
 .controls {
-  margin-top: auto;
+  margin: {
+    top: auto;
+    bottom: 1rem;
+  }
   button {
     display: block;
     width: 100%;

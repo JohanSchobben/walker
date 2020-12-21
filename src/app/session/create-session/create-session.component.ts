@@ -51,6 +51,7 @@ export class CreateSessionComponent {
   }
 
   stop(){
+    this.pause$.next(true);
     this.state = CreateSesionState.Stop;
     if(!this.stopTime) {
       this.stopTime = new Date();
