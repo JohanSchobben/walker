@@ -27,4 +27,11 @@ export class SprintDatabaseService {
       );
   }
 
+  public updateSprint(sprint: Sprint): Observable<Sprint> {
+    return this.databaseService.update('sprints', sprint.toObject())
+      .pipe(
+        map(_ => sprint)
+      );
+  }
+
 }

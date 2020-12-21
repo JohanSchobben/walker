@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SprintDatabaseService } from './sprint-database.service';
-import { map, take } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Sprint } from '../model/sprint.model';
 import { Walk } from '../model/walk.model';
@@ -31,6 +31,24 @@ export class SprintService {
   }
 
   public updateSprint(sprint: Sprint): void {
-    
+    this.sprintDatbaseService.updateSprint(sprint)
+      .pipe(
+        map(_ => sprint)
+      );
+  }
+
+  public addWalkToSprint(walk: Walk, sprint?: Sprint) {
+    if (!sprint) {
+      return this.getCurrentSprint()
+        .pipe(
+          switchMap((sprint: Sprint) => {
+            sprint.addWalk(walk);
+            return this.sprintDatbaseService.updateSprint(sprint);
+          })
+        );
+    }
+
+    sprint.addWalk(walk);
+    return this.sprintDatbaseService.updateSprint(sprint);
   }
 }

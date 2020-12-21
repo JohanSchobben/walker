@@ -58,6 +58,16 @@ export class DatabaseService implements OnDestroy{
     return from(transaction);
   }
 
+  public update(objectStore: string, data: any): Observable<any> {
+    const transaction = this.database
+    .then(idb => {
+      const tx = idb.transaction(objectStore, 'readwrite');
+      const store = tx.objectStore(objectStore)
+      return store.put(data);
+    });
+  return from(transaction);
+  }
+
   ngOnDestroy(): void {
     this.database.then(db => db.close());
   }

@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { combineLatest, interval, BehaviorSubject, NEVER, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Walk } from 'src/app/sprint/model/walk.model';
+import { SprintService } from 'src/app/sprint/services/sprint.service';
 import { liveCount } from 'src/app/utils/utils';
 import { CreateSesionState } from './create-session.state';
 
@@ -12,14 +15,16 @@ import { CreateSesionState } from './create-session.state';
 })
 export class CreateSessionComponent {
 
+  @ViewChild('confirm') confirmTemplate: TemplateRef<any>
+
   timer$ = interval(1000);
   pause$ = new BehaviorSubject<boolean>(true);
-
   startTime: Date;
   stopTime: Date;
-
   createSessionState = CreateSesionState;
   state = CreateSesionState.Idle;
+
+  dialogRef: MatDialogRef<TemplateRef<any>>;
 
   stopWatch$ = combineLatest([this.timer$, this.pause$])
     .pipe(
@@ -29,9 +34,11 @@ export class CreateSessionComponent {
       liveCount()
     );
 
-  constructor() {
-
-  }
+  constructor(
+    private readonly sprintService: SprintService,
+    private readonly matDialog: MatDialog,
+    private readonly router: Router
+  ) {}
 
   pause(): void {
     this.state = CreateSesionState.Pause;
@@ -59,7 +66,17 @@ export class CreateSessionComponent {
 
     const walk = new Walk(this.startTime);
     walk.duration = (this.stopTime.getTime() - this.startTime.getTime()) / 1000;
-    console.log("duration is ", walk.duration)
+    this.sprintService
+        .addWalkToSprint(walk)
+        .subscribe(sprint => {
+          this.dialogRef = this.matDialog.open(this.confirmTemplate, {disableClose: false})
+        });
+
+  }
+
+  continue(): void {
+    this.dialogRef.close();
+    this.router.navigate(["..", "sprint"]);
   }
 
 }
