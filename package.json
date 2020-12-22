@@ -23,6 +23,7 @@
     "@angular/router": "~11.0.4",
     "angular-material-css-vars": "^1.1.2",
     "idb": "^5.0.8",
+    "leaflet": "^1.7.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
@@ -32,6 +33,7 @@
     "@angular/cli": "~11.0.4",
     "@angular/compiler-cli": "~11.0.4",
     "@types/jasmine": "~3.6.0",
+    "@types/leaflet": "^1.5.19",
     "@types/node": "^12.11.1",
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.6.0",
