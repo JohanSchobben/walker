@@ -1,9 +1,11 @@
+import { Theme } from "./type.model";
+
 export class Profile {
   private _firstName: string;
   private _middleName: string;
   private _lastName: string;
   private _birthDay: Date;
-  private _theme: string;
+  private _theme: Theme;
 
   static fromObject(obj: ProfileObject): Profile {
     const profile = new Profile();
@@ -44,11 +46,11 @@ export class Profile {
     this._birthDay = value;
   }
 
-  public get theme(): string {
+  public get theme(): Theme {
     return this._theme;
   }
 
-  public set theme(value: string) {
+  public set theme(value: Theme) {
     this._theme = value;
   }
 
@@ -64,11 +66,10 @@ export class Profile {
 
 }
 
-
 type ProfileObject = {
   firstName: string;
   middleName: string;
   lastName: string;
   birthDay: Date;
-  theme: string;
+  theme: Theme;
 }

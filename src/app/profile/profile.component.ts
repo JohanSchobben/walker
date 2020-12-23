@@ -6,6 +6,7 @@ import { observable } from 'rxjs';
 import { Profile } from './model/profile.model';
 import { ProfileService } from './service/profile.service';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 
 @Component({
@@ -55,9 +56,9 @@ export class ProfileComponent implements OnInit {
       })
   }
 
-  onThemToggle(value: boolean){
-    this.profile.theme = value ? 'dark': 'light';
-
+  onThemToggle(value: MatSlideToggleChange){
+    this.profile.theme = value.checked ? 'dark': 'light';
+    console.log("toggle")
   }
 
 }

@@ -43,7 +43,7 @@
       <mat-list-item role="listitem">
         <div class="list-item">
           Gebruik dark mode
-          <mat-slide-toggle [checked]="profile?.theme === 'dark'"></mat-slide-toggle>
+          <mat-slide-toggle (change)="onThemToggle($event)" [checked]="profile?.theme === 'dark'"></mat-slide-toggle>
         </div>
       </mat-list-item>
     </mat-list>
