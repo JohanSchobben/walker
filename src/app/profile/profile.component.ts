@@ -58,7 +58,7 @@ export class ProfileComponent implements OnInit {
 
   onThemToggle(value: MatSlideToggleChange){
     this.profile.theme = value.checked ? 'dark': 'light';
-    console.log("toggle")
+    this.profileService.setTheme(this.profile.theme).subscribe();
   }
 
 }

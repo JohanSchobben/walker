@@ -1,18 +1,12 @@
-import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Theme } from '../model/type.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
 
-  renderer: Renderer2;
-
-  constructor(rendererFactory: RendererFactory2){
-    this.renderer = rendererFactory.createRenderer(null, null);
-  }
-
-  public setTheme(theme: string): void {
-    const oldStlyes = document.head.querySelector("[rel=stylesheet]");
-    this.renderer.setAttribute(oldStlyes, 'href', `/${theme}.css`)
+  public setTheme(theme: Theme): void {
+    document.body.className = theme;
   }
 }

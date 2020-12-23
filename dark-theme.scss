@@ -7,16 +7,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 $primary: mat-palette($mat-blue);
 $accent:  mat-palette($mat-amber, A200, A100, A400);
+
 $warn:    mat-palette($mat-red);
 $success: mat-palette($mat-green);
 
-$dark-primary: mat-palette($mat-blue-grey);
-$dark-accent:  mat-palette($mat-amber, A200, A100, A400);
-$dark-warn:    mat-palette($mat-deep-orange);
-
 @include mat-core();
 
-$theme: mat-light-theme((
+$theme: mat-dark-theme((
   color: (
     primary: $primary,
     accent: $accent,
@@ -25,18 +22,4 @@ $theme: mat-light-theme((
 
 ));
 
-$dark-theme: mat-dark-theme((
-  color: (
-    primary: $dark-primary,
-    accent: $dark-accent,
-    warn: $dark-warn,
-  )
-));
-
-.light {
-  @include angular-material-theme($theme);
-}
-
-.dark {
-  @include angular-material-color($dark-theme);
-}
+@include angular-material-theme($theme);
