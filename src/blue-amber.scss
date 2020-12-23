@@ -1,0 +1,25 @@
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+@import '~@angular/material/theming';
+@import './styles/head';
+
+$primary: mat-palette($mat-blue);
+$accent:  mat-palette($mat-amber, A200, A100, A400);
+
+$warn:    mat-palette($mat-red);
+$success: mat-palette($mat-green);
+
+@include mat-core();
+
+$theme: mat-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+  )
+
+));
+
+@include angular-material-theme($theme);
