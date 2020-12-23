@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { observable } from 'rxjs';
 import { Profile } from './model/profile.model';
 import { ProfileService } from './service/profile.service';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 @Component({
   selector: 'wlk-profile',
@@ -14,6 +16,8 @@ import { ProfileService } from './service/profile.service';
 export class ProfileComponent implements OnInit {
   form: FormGroup;
   profile: Profile;
+  minDate: Date;
+  maxDate: Date;
 
   constructor(
     private readonly profileService: ProfileService,
@@ -21,6 +25,10 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.minDate = new Date(1900, 0);
+    this.maxDate = new Date();
+
+
     this.profileService.getProfile()
       .subscribe(profile => {
         this.form = new FormGroup({
@@ -37,6 +45,7 @@ export class ProfileComponent implements OnInit {
   onProfileSubmit(){
     this.profile = Profile.fromObject({
       ...this.form.value,
+      birthDay: new Date(this.form.value.birthDay),
       theme: this.profile?.theme
     });
 

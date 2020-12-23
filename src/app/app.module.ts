@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { DB_VERSION, DB_NAME } from './database.const';
 import { MatSnackBarConfig, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { MatNativeDateModule } from '@angular/material/core';
 
 const matSnackbarOptions: MatSnackBarConfig<any> = {
    duration: 3000
@@ -34,13 +35,16 @@ const matSnackbarOptions: MatSnackBarConfig<any> = {
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatNativeDateModule
   ],
   providers: [
     {provide: DB_VERSION, useValue: 1},
     {provide: DB_NAME, useValue: 'walker-db'},
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: matSnackbarOptions}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

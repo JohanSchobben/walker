@@ -11,6 +11,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatListModule } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatSlideToggleModule,
     MatListModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule
   ]
 })
 export class ProfileModule { }
