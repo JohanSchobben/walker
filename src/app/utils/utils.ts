@@ -9,3 +9,8 @@ export const liveCount = <T>() => (source: Observable<T>): Observable<number>  =
     })
 
 }
+
+export const isSameDay = (dateA: Date, dateB: Date) =>
+  dateA.getDate() === dateB.getDate() &&
+  dateA.getMonth() === dateB.getMonth() &&
+  dateA.getFullYear() === dateB.getFullYear();

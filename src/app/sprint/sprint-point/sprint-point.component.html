@@ -1,1 +1,16 @@
-<div [class]="{'walked': !!walk}"></div>
+<mat-card>
+  <mat-card-title>Dagoverzicht</mat-card-title>
+  <mat-card-content>
+    <div class="week">
+      <div *ngFor="let number of firstWeek" class="day" [class]="{'walked': sprint.getSprintByDay(number).length > 0}">
+        <span>{{ sprint.getSprintByDay(number).length }}</span>
+      </div>
+    </div>
+    <div class="week">
+      <div *ngFor="let number of secondWeek" class="day" [class]="{'walked': sprint.getSprintByDay(number).length > 0}">
+        <span>{{ sprint.getSprintByDay(number).length }}</span>
+      </div>
+    </div>
+    <div class="week"></div>
+  </mat-card-content>
+</mat-card>

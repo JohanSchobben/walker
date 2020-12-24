@@ -1,7 +1,23 @@
-
-
-
-div {
+.day {
     border-radius: 50%;
     border: 1px solid gray;
+    height: 1.8rem;
+    width: 1.8rem;
+    background-color: red;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.walked {
+  background-color: green;
+}
+
+.week {
+  display: flex;
+  justify-content: space-between;
+  &:not(:first-child) {
+    margin-top: 1rem;
+  }
 }

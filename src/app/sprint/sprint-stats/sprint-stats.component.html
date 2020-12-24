@@ -7,7 +7,7 @@
     <mat-card-content>
         <div class="stats">
             <div class="stat">
-                <h3>{{ sprint.duration }}</h3>
+                <h3>{{ sprint.duration | duration }}</h3>
                 <span>{{ sprint.duration | durationIndicator }}</span>
             </div>
             <div class="stat">
@@ -17,3 +17,4 @@
         </div>
     </mat-card-content>
 </mat-card>
+

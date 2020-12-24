@@ -1,4 +1,5 @@
-import { Walk } from './walk.model'
+import { Walk } from './walk.model';
+import { isSameDay } from '../../utils/utils';
 
 export class Sprint {
   private _id: string;
@@ -66,6 +67,12 @@ export class Sprint {
   public get duration(): number {
     return this._walks.map(w => w.duration)
       .reduce((prev, curr) => prev + curr, 0);
+  }
+
+  public getSprintByDay(dayIndex: number): Walk[] {
+    const date = new Date();
+    date.setDate(date.getDate() + dayIndex);
+    return this.walks.filter(walk => isSameDay(date, walk.startTime));
   }
 
   public toObject(): SprintObject {
