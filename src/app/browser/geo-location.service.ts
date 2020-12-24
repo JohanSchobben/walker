@@ -1,6 +1,7 @@
 import { Position } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable, Subscriber } from 'rxjs';
+import { GeolocationPosition } from '../browser/types/geo-location-position.type'
 
 @Injectable({
   providedIn: 'root'

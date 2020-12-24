@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { combineLatest, interval, BehaviorSubject, NEVER, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { MapComponent } from 'src/app/map/map.component';
 import { Walk } from 'src/app/sprint/model/walk.model';
 import { SprintService } from 'src/app/sprint/services/sprint.service';
 import { liveCount } from 'src/app/utils/utils';
@@ -16,6 +17,7 @@ import { CreateSesionState } from './create-session.state';
 export class CreateSessionComponent {
 
   @ViewChild('confirm') confirmTemplate: TemplateRef<any>
+  @ViewChild('map') mapComponent: MapComponent;
 
   timer$ = interval(1000);
   pause$ = new BehaviorSubject<boolean>(true);
@@ -44,17 +46,21 @@ export class CreateSessionComponent {
     this.state = CreateSesionState.Pause;
     this.pause$.next(true);
     this.stopTime = new Date();
+    this.mapComponent.line.setStyle({fillOpacity: 0.4});
   }
 
   resume(): void {
     this.state = CreateSesionState.Walking;
     this.pause$.next(false);
     this.stopTime = null;
+    this.mapComponent.line.setStyle({fillOpacity: 0.8});
+
   }
 
   start() {
     this.resume();
     this.startTime = new Date();
+    this.mapComponent.trackPosition();
   }
 
   stop(){
@@ -63,6 +69,8 @@ export class CreateSessionComponent {
     if(!this.stopTime) {
       this.stopTime = new Date();
     }
+
+    this.mapComponent.stopTracking();
 
     const walk = new Walk(this.startTime);
     walk.duration = (this.stopTime.getTime() - this.startTime.getTime()) / 1000;

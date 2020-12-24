@@ -29,6 +29,11 @@
             ],
             "styles": [
               {
+                "input": "src/leaflet.scss",
+                "inject": true,
+                "bundleName": "leaflet"
+              },
+              {
                 "input": "src/blue-amber.scss",
                 "inject": true,
                 "bundleName": "light-theme"

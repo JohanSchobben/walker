@@ -7,6 +7,7 @@ import { CreateSessionComponent } from './create-session/create-session.componen
 import { SharedModule } from '../shared/shared.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MapModule } from '../map/map.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     SessionRoutingModule,
     SharedModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MapModule
   ]
 })
 export class SessionModule { }
