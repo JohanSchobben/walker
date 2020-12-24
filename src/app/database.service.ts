@@ -19,6 +19,9 @@ export class DatabaseService implements OnDestroy{
           const sprintOS = db.createObjectStore('sprints', {keyPath: 'id'});
           sprintOS.createIndex('startDate', 'stardate', {unique: true});
         }
+        if (!db.objectStoreNames.contains('profile')) {
+          db.createObjectStore('profile', {autoIncrement: true});
+        }
       },
     });
    }
@@ -66,6 +69,16 @@ export class DatabaseService implements OnDestroy{
       return store.put(data);
     });
   return from(transaction);
+  }
+
+  public deleteAll(objectStore: string): Observable<void> {
+    const transaction = this.database
+      .then(idb => {
+        const tx = idb.transaction(objectStore, 'readwrite');
+        const store = tx.objectStore(objectStore)
+        return store.clear();
+      });
+    return from(transaction);
   }
 
   ngOnDestroy(): void {

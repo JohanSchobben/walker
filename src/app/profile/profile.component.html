@@ -1,0 +1,51 @@
+<h1>profiel</h1>
+<mat-card>
+    <mat-card-title>
+      Jouw gegevens
+    </mat-card-title>
+  <mat-card-content>
+    <form id="profile-form" *ngIf="!!form" [formGroup]="form" (ngSubmit)="onProfileSubmit()">
+      <mat-form-field>
+        <mat-label>Voornaam</mat-label>
+        <input matInput formControlName="firstName">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Tussenvoegsel</mat-label>
+        <input matInput formControlName="middleName">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Achternaam</mat-label>
+        <input matInput formControlName="lastName">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Geboortedatum</mat-label>
+        <input matInput formControlName="birthDay" [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="actions">
+      <button mat-button
+              color="primary"
+              form="profile-form">opslaan</button>
+    </div>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card class="app-settings">
+  <mat-card-title>
+    Applicatie instellingen
+  </mat-card-title>
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <div class="list-item">
+          Gebruik dark mode
+          <mat-slide-toggle (change)="onThemToggle($event)" [checked]="profile?.theme === 'dark'"></mat-slide-toggle>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

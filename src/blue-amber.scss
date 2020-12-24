@@ -1,0 +1,42 @@
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+@import '~@angular/material/theming';
+@import './styles/head';
+
+$primary: mat-palette($mat-blue);
+$accent:  mat-palette($mat-amber, A200, A100, A400);
+$warn:    mat-palette($mat-red);
+$success: mat-palette($mat-green);
+
+$dark-primary: mat-palette($mat-blue-grey);
+$dark-accent:  mat-palette($mat-amber, A200, A100, A400);
+$dark-warn:    mat-palette($mat-deep-orange);
+
+@include mat-core();
+
+$theme: mat-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+  )
+
+));
+
+$dark-theme: mat-dark-theme((
+  color: (
+    primary: $dark-primary,
+    accent: $dark-accent,
+    warn: $dark-warn,
+  )
+));
+
+.light-theme {
+  @include angular-material-theme($theme);
+}
+
+.dark-theme {
+  @include angular-material-theme($dark-theme);
+}
