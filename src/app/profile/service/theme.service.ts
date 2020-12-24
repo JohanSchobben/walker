@@ -7,6 +7,6 @@ import { Theme } from '../model/type.model';
 export class ThemeService {
 
   public setTheme(theme: Theme): void {
-    document.body.className = theme;
+    document.body.className = theme + '-theme';
   }
 }

@@ -33,10 +33,10 @@ $dark-theme: mat-dark-theme((
   )
 ));
 
-.light {
+.light-theme {
   @include angular-material-theme($theme);
 }
 
-.dark {
+.dark-theme {
   @include angular-material-color($dark-theme);
 }
