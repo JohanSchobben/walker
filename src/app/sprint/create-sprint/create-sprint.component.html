@@ -1,5 +1,23 @@
 <h1>Nieuwe sprint</h1>
 <p>Je hebt geen sprint vandaag. Klik hieronder om een nieuwe te starten voor 2 weken</p>
+<h2>Doelstelling</h2>
+<div class="flex">
+  <div class="counter-block">
+    <span>
+      aantal keer
+    </span>
+    <wlk-counter [(ngModel)]="times"></wlk-counter>
+  </div>
+  <div class="counter-block">
+    <span>
+      minuten
+    </span>
+    <wlk-counter [(ngModel)]="minutes"></wlk-counter>
+  </div>
+</div>
+<div class="no-goal">
+  <mat-checkbox [(ngModel)]="noGoal">Ik wil geen doel instellen</mat-checkbox>
+</div>
 <div class="controls">
     <button mat-button (click)="cancel()">annuleren</button>
     <button class="submit" mat-raised-button color="primary" (click)="start()">Start!</button>

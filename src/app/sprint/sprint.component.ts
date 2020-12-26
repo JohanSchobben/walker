@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Sprint } from './model/sprint.model';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CreateSprintComponent } from './create-sprint/create-sprint.component';
+import { Goal } from './model/goal.model';
 
 @Component({
   selector: 'wlk-sprint',
@@ -34,17 +35,21 @@ export class SprintComponent implements OnInit {
 
   registerDialogClose(): void {
     this.dialogRef.afterClosed()
-      .subscribe((result: boolean) => {
-        if (result) {
-          this.createSprint();
+      .subscribe((result: boolean | Goal) => {
+        if (result instanceof Goal) {
+          this.createSprint(result);
         } else {
-          this.router.navigate(['..']);
+          if (result) {
+            this.createSprint();
+          } else {
+            this.router.navigate(['..']);
+          }
         }
       });
   }
 
-  private createSprint(): void {
-    this.sprintService.createSprint()
+  private createSprint(goal?: Goal): void {
+    this.sprintService.createSprint(goal)
       .subscribe(sprint => {
         this.sprint = sprint;
       })

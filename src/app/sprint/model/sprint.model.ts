@@ -1,11 +1,14 @@
 import { Walk } from './walk.model';
 import { isSameDay } from '../../utils/utils';
+import { Marshallable } from 'src/app/utils/marshallable.interface';
+import { Goal, GoalObject } from './goal.model';
 
-export class Sprint {
+export class Sprint implements Marshallable {
   private _id: string;
   private _startDate: Date;
   private _weeks: number;
   private _walks: Walk[];
+  private _goal: Goal;
 
   constructor(){
     this._walks = [];
@@ -60,6 +63,10 @@ export class Sprint {
     return this._walks;
   }
 
+  public set goal(goal: Goal) {
+    this._goal = goal;
+  }
+
   public addWalk(walk: Walk): void {
     this._walks.push(walk);
   }
@@ -69,8 +76,19 @@ export class Sprint {
       .reduce((prev, curr) => prev + curr, 0);
   }
 
+  public get goal(): Goal {
+    return this._goal;
+  }
+
+  public get goalAchieved(): boolean {
+    const timesWalked = this.walks.length;
+    const minutesWalked = this.walks.reduce((previous: number, current: Walk) => previous + current.duration, 0);
+
+    return timesWalked >= this._goal.times && minutesWalked >= this._goal.minutes;
+  }
+
   public getSprintByDay(dayIndex: number): Walk[] {
-    const date = new Date();
+    const date = new Date(this.startDate);
     date.setDate(date.getDate() + dayIndex);
     return this.walks.filter(walk => isSameDay(date, walk.startTime));
   }
@@ -80,7 +98,8 @@ export class Sprint {
       id: this._id,
       startDate: this._startDate,
       weeks: this._weeks,
-      walks: this._walks.map(w => w.toObject())
+      walks: this._walks.map(w => w.toObject()),
+      goal: this._goal?.toObject()
     };
   }
 }
@@ -91,4 +110,5 @@ export type SprintObject = {
   startDate: Date;
   weeks: number;
   walks: {startTime: Date, duration: number}[]
+  goal: GoalObject;
 };

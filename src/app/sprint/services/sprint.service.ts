@@ -4,6 +4,7 @@ import { map, switchMap, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Sprint } from '../model/sprint.model';
 import { Walk } from '../model/walk.model';
+import { Goal } from '../model/goal.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +25,10 @@ export class SprintService {
       );
   }
 
-  public createSprint(): Observable<Sprint> {
+  public createSprint(goal?: Goal): Observable<Sprint> {
     const sprint = new Sprint();
     sprint.startDate = new Date();
+    sprint.goal = goal;
     return this.sprintDatbaseService.createSprint(sprint);
   }
 

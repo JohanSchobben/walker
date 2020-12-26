@@ -16,7 +16,11 @@ export class AppInitService {
   public init(): Promise<void> {
     return this.profileService.getProfile()
       .pipe(
-        tap(profile => this.themeService.setTheme(profile.theme)),
+        tap(profile => {
+          if(profile.theme) {
+            this.themeService.setTheme(profile.theme)
+          }
+        }),
         map(_ => undefined)
       ).toPromise()
 

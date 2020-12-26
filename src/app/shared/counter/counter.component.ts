@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -26,6 +26,8 @@ export class CounterComponent implements ControlValueAccessor {
   @Input() max: number = Number.POSITIVE_INFINITY;
   @Input() disabled = false;
 
+  @Output() change: EventEmitter<number> = new EventEmitter<number>();
+
   private formTouched(): void {
     if(this.unTouched) {
       this.unTouched = false;
@@ -39,6 +41,7 @@ export class CounterComponent implements ControlValueAccessor {
       this.value++;
       this.changeFunction(this.value);
       this.formTouched();
+      this.change.emit(this.value);
     }, 100)
   }
 
@@ -48,6 +51,7 @@ export class CounterComponent implements ControlValueAccessor {
       this.value--;
       this.changeFunction(this.value);
       this.formTouched();
+      this.change.emit(this.value);
     }, 100)
   }
 
@@ -65,6 +69,7 @@ export class CounterComponent implements ControlValueAccessor {
     clearInterval(this.upInterval);
     this.changeFunction(this.value);
     this.formTouched();
+    this.change.emit(this.value);
   }
 
   public onDownButtonClick(): void {
@@ -73,6 +78,7 @@ export class CounterComponent implements ControlValueAccessor {
     clearInterval(this.downInterval);
     this.changeFunction(this.value);
     this.formTouched();
+    this.change.emit(this.value);
   }
 
   public writeValue(value: number): void {
@@ -92,5 +98,4 @@ export class CounterComponent implements ControlValueAccessor {
   public setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
   }
-
 }

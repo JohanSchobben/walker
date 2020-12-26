@@ -12,7 +12,8 @@ import {MatButtonModule} from '@angular/material/button';
 import { SprintStatsComponent } from './sprint-stats/sprint-stats.component';
 import { SharedModule } from '../shared/shared.module';
 import { MatIconModule } from '@angular/material/icon';
-
+import { FormsModule } from '@angular/forms';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatButtonModule,
     SharedModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule,
+    MatCheckboxModule,
+    
   ]
 })
 export class SprintModule { }
