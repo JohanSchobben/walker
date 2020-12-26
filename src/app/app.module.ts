@@ -24,6 +24,8 @@ import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 const matSnackbarOptions: MatSnackBarConfig<any> = {
    duration: 3000
@@ -52,7 +54,8 @@ function initApp(appInitService: AppInitService){
     MatNativeDateModule,
     SharedModule,
     ReactiveFormsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    MatTooltipModule
   ],
   providers: [
     {provide: DB_VERSION, useValue: 1},

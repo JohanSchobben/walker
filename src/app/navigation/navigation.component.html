@@ -20,6 +20,7 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>walker</span>
+      <mat-icon *ngIf="offline$ | async" wlkNoContextMenu matTooltip="Je bent offline" class="right">wifi_off</mat-icon>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>
