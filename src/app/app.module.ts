@@ -22,6 +22,8 @@ import { ProfileDatabaseService } from './profile/service/profile-database.servi
 import { DatabaseService } from './database.service';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const matSnackbarOptions: MatSnackBarConfig<any> = {
    duration: 3000
@@ -49,7 +51,8 @@ function initApp(appInitService: AppInitService){
     MatListModule,
     MatNativeDateModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     {provide: DB_VERSION, useValue: 1},
