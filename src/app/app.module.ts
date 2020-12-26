@@ -81,7 +81,7 @@ function initApp(appInitService: AppInitService){
 export class AppModule {
   constructor(swUpdate: SwUpdate, snackbar: MatSnackBar) {
     swUpdate.available.subscribe(() => {
-      const snack = snackbar.open('update beschikbaar', 'verversen', {duration: Number.POSITIVE_INFINITY});
+      const snack = snackbar.open('update beschikbaar', 'verversen', {duration: 1_800_000});
 
       snack.onAction().subscribe(() => {
         window.location.reload();
