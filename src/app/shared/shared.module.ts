@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { DurationIndicatorPipe } from './duration-indicator.pipe';
 import { TimePipe } from './time.pipe';
 import { DurationPipe } from './duration.pipe';
+import { CounterComponent } from './counter/counter.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { NoContextMenuDirective } from './no-context-menu.directive';
 
 
 
@@ -10,15 +14,20 @@ import { DurationPipe } from './duration.pipe';
   declarations: [
     DurationIndicatorPipe,
     TimePipe,
-    DurationPipe
+    DurationPipe,
+    CounterComponent,
+    NoContextMenuDirective,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatIconModule,
+    MatButtonModule
   ],
   exports: [
     DurationIndicatorPipe,
     TimePipe,
-    DurationPipe
+    DurationPipe,
+    CounterComponent,
   ]
 })
 export class SharedModule { }

@@ -20,6 +20,8 @@ import { ThemeService } from './profile/service/theme.service';
 import { ProfileService } from './profile/service/profile.service';
 import { ProfileDatabaseService } from './profile/service/profile-database.service';
 import { DatabaseService } from './database.service';
+import { SharedModule } from './shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const matSnackbarOptions: MatSnackBarConfig<any> = {
    duration: 3000
@@ -45,7 +47,9 @@ function initApp(appInitService: AppInitService){
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    SharedModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: DB_VERSION, useValue: 1},

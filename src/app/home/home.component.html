@@ -8,3 +8,10 @@
   </mat-icon>
 </a>
 <a routerLink="/sprint" >Sprint</a>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex">
+  <wlk-counter formControlName="times"></wlk-counter>
+  <wlk-counter formControlName="meters"></wlk-counter>
+  <wlk-counter formControlName="time"></wlk-counter>
+  <button>submit</button>
+</form>

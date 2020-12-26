@@ -1,0 +1,29 @@
+<div class="counter">
+  <button mat-button
+        (mousedown)="onUpButtonMousedown()"
+        (touchstart)="onUpButtonMousedown()"
+        (mouseup)="onUpButtonMouseup()"
+        (touchend)="onUpButtonMouseup()"
+        (click)="onUpButtonClick()"
+        [disabled]="disabled"
+        type="button"
+        wlkNoContextMenu>
+  <mat-icon>
+    expand_less
+  </mat-icon>
+</button>
+{{value}}
+<button mat-button
+        (mousedown)="onDownButtonMousedown()"
+        (touchstart)="onDownButtonMousedown()"
+        (mouseup)="onDownButtonMouseup()"
+        (touchend)="onDownButtonMouseup()"
+        (click)="onDownButtonClick()"
+        [disabled]="disabled"
+        type="button"
+        wlkNoContextMenu>
+  <mat-icon>
+    expand_more
+  </mat-icon>
+</button>
+</div>

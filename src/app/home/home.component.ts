@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'wlk-home',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  form: FormGroup;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.form = new FormGroup({
+      times: new FormControl(10),
+      meters: new FormControl(),
+      time: new FormControl()
+    });
   }
 
+  onSubmit(): void {
+    console.log(this.form.value);
+  }
 }
