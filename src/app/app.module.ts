@@ -13,7 +13,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { DB_VERSION, DB_NAME } from './database.const';
-import { MatSnackBarConfig, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarConfig, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AppInitService } from './services/app-init.service';
 import { ThemeService } from './profile/service/theme.service';
@@ -22,7 +22,7 @@ import { ProfileDatabaseService } from './profile/service/profile-database.servi
 import { DatabaseService } from './database.service';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ServiceWorkerModule } from '@angular/service-worker';
+import { ServiceWorkerModule, SwUpdate } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import {MatTooltipModule} from '@angular/material/tooltip';
 
@@ -78,4 +78,14 @@ function initApp(appInitService: AppInitService){
     AppComponent
   ]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(swUpdate: SwUpdate, snackbar: MatSnackBar) {
+    swUpdate.available.subscribe(() => {
+      const snack = snackbar.open('update beschikbaar', 'verversen', {duration: Number.POSITIVE_INFINITY});
+
+      snack.onAction().subscribe(() => {
+        window.location.reload();
+      });
+    })
+  }
+}
