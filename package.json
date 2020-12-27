@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "gh:build": "ng build --prod --output-path ghdist --base-href /walker/"
+    "gh:build": "ng build --prod --output-path docs --base-href /walker/"
   },
   "private": true,
   "dependencies": {
