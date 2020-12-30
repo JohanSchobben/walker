@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-title>
+        Jouw doel
+    </mat-card-title>
+  <mat-card-content>
+    <small>Je hebt nog ongeveer {{ sprint.endDate | countdown }} tot het einde van de sprint</small>
+    <div class="percentage-container">
+      <div class="percentage-block">
+        <span class="percentage">{{ 100 / sprint.goal.minutes * sprint.duration | percentage }}</span>
+        <span>Tijd</span>
+      </div>
+      <div class="percentage-block">
+        <span class="percentage">{{ 100 / sprint.goal.times * sprint.walks.length | percentage }}</span>
+        <span>keer</span>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+

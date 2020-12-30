@@ -14,6 +14,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { GoalOverviewComponent } from './goal-overview/goal-overview.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     SprintPointComponent,
     CreateSprintComponent,
     SprintFormComponent,
-    SprintStatsComponent
+    SprintStatsComponent,
+    GoalOverviewComponent
   ],
   imports: [
     CommonModule,

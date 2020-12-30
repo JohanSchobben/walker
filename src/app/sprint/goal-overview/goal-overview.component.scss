@@ -1,0 +1,14 @@
+.percentage-container {
+  display: flex;
+  padding: 2rem 0;
+  justify-content: space-around;
+}
+.percentage-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.percentage {
+  font-size: 2rem;
+  font-weight: 700;
+}

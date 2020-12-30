@@ -25,6 +25,8 @@ export class Sprint implements Marshallable {
       w.duration = walk.duration;
       sprint.addWalk(w);
     });
+
+    sprint.goal = Goal.fromObject(obj.goal);
     return sprint;
   }
 

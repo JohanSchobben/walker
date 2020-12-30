@@ -2,3 +2,4 @@
 
 <wlk-sprint-stats [sprint]="sprint" *ngIf="sprint"></wlk-sprint-stats>
 <wlk-sprint-point class="stats" *ngIf="!!sprint" [sprint]="sprint"></wlk-sprint-point>
+<wlk-goal-overview class="stats" *ngIf="sprint?.goal" [sprint]="sprint"></wlk-goal-overview>

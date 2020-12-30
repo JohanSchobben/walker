@@ -7,6 +7,8 @@ import { CounterComponent } from './counter/counter.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { NoContextMenuDirective } from './no-context-menu.directive';
+import { CountdownPipe } from './countdown.pipe';
+import { PercentagePipe } from './percentage.pipe';
 
 
 
@@ -17,6 +19,8 @@ import { NoContextMenuDirective } from './no-context-menu.directive';
     DurationPipe,
     CounterComponent,
     NoContextMenuDirective,
+    CountdownPipe,
+    PercentagePipe,
   ],
   imports: [
     CommonModule,
@@ -28,6 +32,8 @@ import { NoContextMenuDirective } from './no-context-menu.directive';
     TimePipe,
     DurationPipe,
     CounterComponent,
+    CountdownPipe,
+    PercentagePipe,
   ]
 })
 export class SharedModule { }
