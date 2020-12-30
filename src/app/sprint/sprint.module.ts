@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { GoalOverviewComponent } from './goal-overview/goal-overview.component';
+import { SprintDayOverviewComponent } from './sprint-day-overview/sprint-day-overview.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { GoalOverviewComponent } from './goal-overview/goal-overview.component';
     CreateSprintComponent,
     SprintFormComponent,
     SprintStatsComponent,
-    GoalOverviewComponent
+    GoalOverviewComponent,
+    SprintDayOverviewComponent
   ],
   imports: [
     CommonModule,
