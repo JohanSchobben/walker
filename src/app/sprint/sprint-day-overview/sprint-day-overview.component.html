@@ -1,2 +1,19 @@
-<p>sprint-day-overview works!</p>
-{{sprint.id}} {{day}}
+<h4>{{ modalDate | date:'EEEE, dd MMMM YYYY'}}</h4>
+
+<span class="bot-spacer" *ngIf="walks.length === 0">
+  Je hebt niet gelopen op deze dag
+</span>
+
+<ng-container *ngIf="walks.length > 0">
+  <span>
+    Je loops van deze dag
+  </span>
+  <mat-list>
+    <mat-list-item *ngFor="let walk of walks">
+      {{ walk.startTime | date:'HH:MM' }} - {{ sprint.duration | duration }} {{sprint.duration | durationIndicator}}
+    </mat-list-item>
+  </mat-list>
+</ng-container>
+
+<button (click)="close()" mat-button class="block">Sluiten</button>
+

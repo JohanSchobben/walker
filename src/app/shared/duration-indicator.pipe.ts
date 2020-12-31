@@ -14,5 +14,4 @@ export class DurationIndicatorPipe implements PipeTransform {
     }
     return 'uur';
   }
-
 }

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +25,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule, SwUpdate } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import localeNL from '@angular/common/locales/nl';
+import { registerLocaleData } from '@angular/common';
+
+
+registerLocaleData(localeNL);
 
 
 const matSnackbarOptions: MatSnackBarConfig<any> = {
@@ -59,6 +64,7 @@ function initApp(appInitService: AppInitService){
     MatSnackBarModule
   ],
   providers: [
+    {provide: LOCALE_ID, useValue: 'nl-NL'},
     {provide: DB_VERSION, useValue: 1},
     {provide: DB_NAME, useValue: 'walker-db'},
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: matSnackbarOptions},

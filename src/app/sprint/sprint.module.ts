@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { GoalOverviewComponent } from './goal-overview/goal-overview.component';
 import { SprintDayOverviewComponent } from './sprint-day-overview/sprint-day-overview.component';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { SprintDayOverviewComponent } from './sprint-day-overview/sprint-day-ove
     MatIconModule,
     FormsModule,
     MatCheckboxModule,
-    
+    MatListModule
   ]
 })
 export class SprintModule { }
